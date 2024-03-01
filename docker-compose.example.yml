@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: peliculas2024
+      MYSQL_USER: gio22523
+      MYSQL_PASSWORD: Nslqvpm6
+      MYSQL_ROOT_PASSWORD: Nslqvpm6
+    volumes:
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    ports:
+      - "3306:3306"
