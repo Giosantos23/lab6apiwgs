@@ -1,6 +1,13 @@
 version: '3.8'
 
 services:
+  app:
+    build: .
+    ports:
+      - "22523:3000"  
+    depends_on:
+      - mysql
+
   mysql:
     image: mysql:latest
     environment:
@@ -11,4 +18,4 @@ services:
     volumes:
       - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
     ports:
-      - "3306:3306"
+      - "3005:3306"
