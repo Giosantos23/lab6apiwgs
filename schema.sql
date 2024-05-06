@@ -8,3 +8,9 @@ CREATE TABLE IF NOT EXISTS blog_posts (
     director VARCHAR(100),
     genre VARCHAR(100)
 );
+
+CREATE TABLE IF NOT EXISTS users(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user VARCHAR(255) NOT NULL, 
+    password VARCHAR(255) NOT NULL
+)
