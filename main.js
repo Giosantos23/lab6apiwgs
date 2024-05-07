@@ -161,7 +161,7 @@ app.get('/posts/:idpost', async (request, response) => {
  *         description: Error al actualizar el post.
  */
 
-app.put('/posts/:id', verifyToken, async (req, res) => {
+app.put('/posts/:id', async (req, res) => {
   const postId = req.params.id;
   const {
     title, content, created_at, movie_title, release_date, director, genre,
@@ -215,7 +215,7 @@ app.put('/posts/:id', verifyToken, async (req, res) => {
  *       500:
  *         description: Error interno del servidor al intentar crear el post
  */
-app.post('/posts', verifyToken, async (request, response) => {
+app.post('/posts', async (request, response) => {
   const {
     title, content, created_at, movie_title, release_date, director, genre,
   } = request.body;
@@ -248,7 +248,7 @@ app.post('/posts', verifyToken, async (request, response) => {
  *       500:
  *         description: Error interno del servidor al intentar eliminar el post
  */
-app.delete('/posts/:postId', verifyToken, async (request, response) => {
+app.delete('/posts/:postId', async (request, response) => {
   const { postId } = request.params;
 
   try {
@@ -277,9 +277,9 @@ app.post('/register', async (request, response) => {
   const { username, password } = request.body;
 
   try {
-    const users = await verUser(username); // Llama a la función y obtiene los resultados
+    const users = await verUser(username);
 
-    if (users.length > 0) { // Verifica la longitud de los resultados
+    if (users.length > 0) {
       return response.status(400).json({ message: 'El nombre de usuario ya está en uso' });
     }
   } catch (error) {
